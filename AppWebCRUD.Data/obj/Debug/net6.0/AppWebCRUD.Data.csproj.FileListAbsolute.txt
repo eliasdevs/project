@@ -1,0 +1,12 @@
+C:\Users\elias\Documents\c# ASP.NET\BACKEND\AppWebCRUD.Data\bin\Debug\net6.0\AppWebCRUD.Data.deps.json
+C:\Users\elias\Documents\c# ASP.NET\BACKEND\AppWebCRUD.Data\bin\Debug\net6.0\AppWebCRUD.Data.dll
+C:\Users\elias\Documents\c# ASP.NET\BACKEND\AppWebCRUD.Data\bin\Debug\net6.0\AppWebCRUD.Data.pdb
+C:\Users\elias\Documents\c# ASP.NET\BACKEND\AppWebCRUD.Data\obj\Debug\net6.0\AppWebCRUD.Data.csproj.AssemblyReference.cache
+C:\Users\elias\Documents\c# ASP.NET\BACKEND\AppWebCRUD.Data\obj\Debug\net6.0\AppWebCRUD.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\elias\Documents\c# ASP.NET\BACKEND\AppWebCRUD.Data\obj\Debug\net6.0\AppWebCRUD.Data.AssemblyInfoInputs.cache
+C:\Users\elias\Documents\c# ASP.NET\BACKEND\AppWebCRUD.Data\obj\Debug\net6.0\AppWebCRUD.Data.AssemblyInfo.cs
+C:\Users\elias\Documents\c# ASP.NET\BACKEND\AppWebCRUD.Data\obj\Debug\net6.0\AppWebCRUD.Data.csproj.CoreCompileInputs.cache
+C:\Users\elias\Documents\c# ASP.NET\BACKEND\AppWebCRUD.Data\obj\Debug\net6.0\AppWebCRUD.Data.dll
+C:\Users\elias\Documents\c# ASP.NET\BACKEND\AppWebCRUD.Data\obj\Debug\net6.0\refint\AppWebCRUD.Data.dll
+C:\Users\elias\Documents\c# ASP.NET\BACKEND\AppWebCRUD.Data\obj\Debug\net6.0\AppWebCRUD.Data.pdb
+C:\Users\elias\Documents\c# ASP.NET\BACKEND\AppWebCRUD.Data\obj\Debug\net6.0\ref\AppWebCRUD.Data.dll

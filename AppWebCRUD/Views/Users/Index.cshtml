@@ -1,0 +1,112 @@
+﻿@using X.PagedList.Mvc;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@using X.PagedList.Web.Common;
+@model IEnumerable<AppWebCRUD.Data.models.User>
+@{
+    ViewData["Title"] = "Inicio - Usuarios";
+}
+
+<h1>Panel de Administración de Usuarios</h1>
+<p>
+    <a class="btn btn-primary" asp-action="Create" >Crear Nuevo</a>
+</p>
+@using (Html.BeginForm("Index", "Users", FormMethod.Get))
+{
+            <input type="hidden" name="page" value="@ViewBag.Page" />
+            <select name="pageSize" class="form-control">
+                <option value="10" selected="@(ViewBag.PageSize == 10 ? "selected" : null)">10</option>
+                <option value="20" selected="@(ViewBag.PageSize == 20 ? "selected" : null)">20</option>
+                <option value="30" selected="@(ViewBag.PageSize == 30 ? "selected" : null)">30</option>
+                <option value="40" selected="@(ViewBag.PageSize == 40 ? "selected" : null)">40</option>
+            </select>
+
+
+    <input type="submit" class="btn btn-primary" />
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Activo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaRegistro)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {    
+        <tr>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Name) 
+                    @Html.DisplayFor(modelItem => item.LastName)       
+                    
+            </td>            
+            <td>
+                <label>
+                        <input type="checkbox" id="@item.GuidId" class="userStatus" checked="@item.Activo">Activo
+                </label>                
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaRegistro)
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-success" asp-route-id="@item.GuidId">Editar</a> |
+                <a asp-action="Details" class="btn btn-info" asp-route-id="@item.GuidId">Detalles</a> |
+                 <button class="btn btn-warning btnEliminar" id="@item.GuidId">Eliminar</button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", "Users", new { page}) + "&pageSize=" + @ViewBag.PageZise, new PagedListRenderOptions {
+        LiElementClasses = new string[] { "page-item" },
+        PageClasses = new string[] { "page-link" },
+})
+        
+
+
+<script src="~/js/alertify.js"></script>
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-grid.css"/>
+<link rel="stylesheet" href="~/css/alertify.css"/>
+@section scripts {
+        <script type="text/javascript">
+
+            $(document).ready(function(){
+                        $(".userStatus").change(function(){                            
+                        $.ajax({
+                           url: "@Url.Action("GetUser", "Users")", // Url
+                           data: {id:this.getAttribute("id")},
+                           type: "get"  // Verbo HTTP
+                        }).done(function (result) {
+                            if(result!=null){
+                               alertify.success("A cambiado el estado de: "+result.name+" "+result.lastName);
+                            }                        
+                        })
+                        });
+                        $(".btnEliminar").click(function(){
+                          let id=this.getAttribute("id");
+                          alertify.confirm('ALERTA DE ACCIÓN', '¿Esta seguro de Eliminar a este Usuario?', 
+                          function(){ 
+                                  $.ajax({
+                                           url: "@Url.Action("DeleteConfirmed", "Users")", // Url
+                                       data: {id:id},
+                                       type: "POST"  // Verbo HTTP
+                                    }).done(function (result) {                                               
+                                    if(result)alertify.success("Usuario eliminado con exito");
+                                        location.reload(true);                                              
+                                    })                              
+                          }
+                        , function(){ alertify.error('Cancel')})
+                        });                        
+            });
+        </script>
+
+} 
